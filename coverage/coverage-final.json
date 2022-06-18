@@ -1,0 +1,2 @@
+{"/Users/prayag/prayag/ethereum-app/src/app/index.jsx": {"path":"/Users/prayag/prayag/ethereum-app/src/app/index.jsx","statementMap":{"0":{"start":{"line":4,"column":2},"end":{"line":8,"column":4}}},"fnMap":{"0":{"name":"App","decl":{"start":{"line":3,"column":24},"end":{"line":3,"column":27}},"loc":{"start":{"line":3,"column":30},"end":{"line":9,"column":1}},"line":3}},"branchMap":{},"s":{"0":2},"f":{"0":2},"b":{},"_coverageSchema":"1a1c01bbd47fc00a2c39e90264f33305004495a9","hash":"abec9236ebd653f0da210751e9fa2ee1e63ca7a3"}
+}
