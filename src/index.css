@@ -53,3 +53,88 @@ h1 {
   background: var(--primary);
   color: var(--white);
 }
+
+h2 {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.blocks {
+  width: 100%;
+}
+
+.data-container {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  margin: 16px 0;
+  padding: 8px;
+  width: 100%;
+}
+
+.data-container:hover {
+  border-width: 2px;
+  padding: 7px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 64px;
+}
+
+.info-row > div {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 176px;
+}
+
+.info-row > div > span:first-child {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.info-row > div > span:last-child {
+  font-size: 16px;
+}
+
+.button {
+  text-decoration: none;
+  width: 168px;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 24px;
+  align-self: center;
+  font-weight: bold;
+}
+
+.button.disabled {
+  pointer-events: none;
+  background: var(--gray);
+}
+
+.error {
+  color: var(--red);
+}
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+  .info-row > div {
+    width: 24%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .info-row {
+    flex-flow: column;
+    height: 240px;
+  }
+}

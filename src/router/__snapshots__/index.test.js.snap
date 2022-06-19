@@ -1,36 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Component matches snapshot 1`] = `
+exports[`Router Component matches snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="container"
-      >
-        <h1>
-          Ethereum App
-        </h1>
-        <div
-          class="blocks"
-        >
-          <h2>
-            Blocks
-          </h2>
-          <span>
-            Loading...
-          </span>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="container"
-    >
-      <h1>
-        Ethereum App
-      </h1>
       <div
         class="blocks"
       >
@@ -41,6 +15,18 @@ Object {
           Loading...
         </span>
       </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="blocks"
+    >
+      <h2>
+        Blocks
+      </h2>
+      <span>
+        Loading...
+      </span>
     </div>
   </div>,
   "debug": [Function],

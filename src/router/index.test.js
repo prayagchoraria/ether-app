@@ -1,21 +1,16 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import App from '.';
+import Router from '.';
 
-describe.only('App Component', () => {
-  it('displays the header', () => {
-    const { getByText } = render(<App />);
-    expect(getByText('Ethereum App')).toBeInTheDocument();
-  });
-
+describe.only('Router Component', () => {
   it('renders blocks component', () => {
-    const { getByText } = render(<App />);
+    const { getByText } = render(<Router />);
     expect(getByText('Blocks')).toBeInTheDocument();
   });
 
   it('matches snapshot', async () => {
-    const tree = render(<App />);
+    const tree = render(<Router />);
     expect(tree).toMatchSnapshot();
   });
 });
