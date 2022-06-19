@@ -40,6 +40,7 @@ body {
 
 .container {
   max-width: 1000px;
+  width: 100%;
   padding: 0 8px;
   flex: 1;
 }
@@ -61,7 +62,7 @@ h2 {
   margin-bottom: 8px;
 }
 
-.blocks {
+.blocks, .transactions {
   width: 100%;
 }
 
@@ -87,6 +88,15 @@ h2 {
   min-height: 64px;
 }
 
+.info-column {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--primary);
+}
+
 .info-row > div {
   display: flex;
   flex-flow: column;
@@ -94,13 +104,29 @@ h2 {
   width: 176px;
 }
 
-.info-row > div > span:first-child {
+.info-column > div {
+  display: flex;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.info-row > div > span, .info-column > div > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-row > div > span:first-child, .info-column > div > span:first-child {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
-.info-row > div > span:last-child {
+.info-column > div > span:first-child {
+  width: 200px;
+}
+
+.info-row > div > span:last-child, .info-column > div > span:last-child {
   font-size: 16px;
 }
 
@@ -130,11 +156,19 @@ h2 {
   .info-row > div {
     width: 24%;
   }
+
+  .info-column > div {
+    flex-flow: column;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .info-row {
     flex-flow: column;
     height: 240px;
+  }
+
+  .info-column > div {
+    flex-flow: column;
   }
 }

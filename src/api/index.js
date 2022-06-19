@@ -11,3 +11,9 @@ export const fetchBlocks = async () => {
   }
   return Promise.all(blocks);
 };
+
+export const fetchBlockTransactions = async (blockNumber) => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+  const block = await provider.getBlockWithTransactions(blockNumber);
+  return block;
+};

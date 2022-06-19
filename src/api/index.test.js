@@ -1,15 +1,17 @@
 import '@testing-library/jest-dom';
 import { waitFor } from '@testing-library/react';
 import { ethers } from 'ethers';
-import { fetchBlocks } from '.';
+import { fetchBlocks, fetchBlockTransactions } from '.';
 
 jest.mock('ethers');
 
 const getBlockNumber = jest.fn();
 const getBlock = jest.fn();
+const getBlockWithTransactions = jest.fn();
 const Provider = jest.fn();
 Provider.prototype.getBlockNumber = getBlockNumber;
 Provider.prototype.getBlock = getBlock;
+Provider.prototype.getBlockWithTransactions = getBlockWithTransactions;
 ethers.providers.Web3Provider = Provider;
 
 describe.only('API', () => {
@@ -29,6 +31,19 @@ describe.only('API', () => {
         expect(getBlock).toHaveBeenCalledWith(block);
       });
       expect(output).toStrictEqual(blocks);
+    });
+  });
+
+  it('function fetchBlockTransactions returns as expected', async () => {
+    getBlockWithTransactions.mockImplementation(() => Promise.resolve(1));
+
+    const output = await fetchBlockTransactions();
+
+    expect(ethers.providers.Web3Provider).toHaveBeenCalled();
+
+    await waitFor(() => {
+      expect(getBlockWithTransactions).toHaveBeenCalledTimes(1);
+      expect(output).toStrictEqual(1);
     });
   });
 });
