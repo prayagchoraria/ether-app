@@ -5,6 +5,13 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <h1>
+        <a
+          href="/"
+        >
+          Ethereum App
+        </a>
+      </h1>
       <div
         class="blocks"
       >
@@ -18,6 +25,13 @@ Object {
     </div>
   </body>,
   "container": <div>
+    <h1>
+      <a
+        href="/"
+      >
+        Ethereum App
+      </a>
+    </h1>
     <div
       class="blocks"
     >

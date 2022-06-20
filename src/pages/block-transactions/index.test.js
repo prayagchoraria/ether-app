@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import '@testing-library/jest-dom';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { fetchBlockTransactions } from '../../api';
 import BlockTransactions from '.';
 
@@ -30,6 +30,15 @@ const renderBlockTransactions = () => {
       gasPrice: { _hex: '0x12564b62a2' },
       nonce: 23456,
       from: '0xAe45a8240',
+      to: '0x7fA4737Ea',
+      value: { _hex: '0x277df16f52c000' },
+    },
+    {
+      hash: '0x5182e0cd1e58',
+      gasLimit: { _hex: '0x01ba35e2' },
+      gasPrice: { _hex: '0x12564b62a2' },
+      nonce: 23456,
+      from: '0xA7EFAe72',
       to: '0x7fA4737Ea',
       value: { _hex: '0x277df16f52c000' },
     },
@@ -100,6 +109,7 @@ describe.only('BlockTransactions Component', () => {
     await waitFor(() => {
       expect(queryByText('0x395950bd3b8e')).not.toBeInTheDocument();
       expect(queryByText('0x5182e0cd0bd8')).toBeInTheDocument();
+      expect(queryByText('0x5182e0cd1e58')).toBeInTheDocument();
     });
   });
 
@@ -109,5 +119,69 @@ describe.only('BlockTransactions Component', () => {
       expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
     });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('filter results when search input has value', async () => {
+    const tree = renderBlockTransactions();
+    const { queryByPlaceholderText, queryByText } = tree;
+    await waitFor(() => {
+      expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
+    });
+
+    const searchInput = queryByPlaceholderText('Search');
+    fireEvent.change(searchInput, { target: { value: 'A7E' } });
+    expect(searchInput.value).toBe('A7E');
+
+    await waitFor(() => {
+      expect(queryByText('0x395950bd3b8e')).not.toBeInTheDocument();
+      expect(queryByText('0x5182e0cd0bd8')).not.toBeInTheDocument();
+      expect(queryByText('0x5182e0cd1e58')).toBeInTheDocument();
+    });
+  });
+
+  it('filter results when search input has no value', async () => {
+    const tree = renderBlockTransactions();
+    const { queryByPlaceholderText, queryByText } = tree;
+    await waitFor(() => {
+      expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
+    });
+
+    const searchInput = queryByPlaceholderText('Search');
+    searchInput.value = 'xyz';
+    fireEvent.change(searchInput, { target: { value: '' } });
+    expect(searchInput.value).toBe('');
+
+    await waitFor(() => {
+      expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
+    });
+
+    await waitFor(() => {
+      expect(queryByText('0x395950bd3b8e')).not.toBeInTheDocument();
+      expect(queryByText('0x5182e0cd0bd8')).toBeInTheDocument();
+      expect(queryByText('0x5182e0cd1e58')).toBeInTheDocument();
+    });
+  });
+
+  it('displays proper message when the result is empty', async () => {
+    const tree = renderBlockTransactions();
+    const { queryByPlaceholderText, queryByText } = tree;
+    await waitFor(() => {
+      expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
+    });
+
+    const searchInput = queryByPlaceholderText('Search');
+
+    fireEvent.change(searchInput, { target: { value: 'xyz' } });
+    expect(searchInput.value).toBe('xyz');
+
+    await waitFor(() => {
+      expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
+    });
+
+    await waitFor(() => {
+      expect(
+        queryByText('There&#39;s no transaction matching the search input.')
+      ).not.toBeInTheDocument();
+    });
   });
 });

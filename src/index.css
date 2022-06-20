@@ -18,6 +18,11 @@ h2 {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 html:focus-within {
   scroll-behavior: smooth;
 }
@@ -152,6 +157,20 @@ h2 {
   color: var(--red);
 }
 
+.search {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.search input {
+  margin-left: 16px;
+  padding: 8px;
+  border-radius: 4px;
+  flex: 1;
+}
+
 @media screen and (min-width: 481px) and (max-width: 720px) {
   .info-row > div {
     width: 24%;
@@ -170,5 +189,15 @@ h2 {
 
   .info-column > div {
     flex-flow: column;
+  }
+
+  .search {
+    flex-flow: column;
+    align-items: initial;
+  }
+
+  .search input {
+    margin-left: 0;
+    margin-top: 8px;
   }
 }

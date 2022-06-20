@@ -9,7 +9,11 @@ Object {
         class="container"
       >
         <h1>
-          Ethereum App
+          <a
+            href="/"
+          >
+            Ethereum App
+          </a>
         </h1>
         <div
           class="blocks"
@@ -29,7 +33,11 @@ Object {
       class="container"
     >
       <h1>
-        Ethereum App
+        <a
+          href="/"
+        >
+          Ethereum App
+        </a>
       </h1>
       <div
         class="blocks"

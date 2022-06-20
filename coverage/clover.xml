@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655728234425" clover="3.2.0">
-  <project timestamp="1655728234425" name="All files">
-    <metrics statements="47" coveredstatements="47" conditionals="14" coveredconditionals="14" methods="14" coveredmethods="14" elements="75" coveredelements="75" complexity="0" loc="47" ncloc="47" packages="6" files="6" classes="6"/>
+<coverage generated="1655741099783" clover="3.2.0">
+  <project timestamp="1655741099783" name="All files">
+    <metrics statements="61" coveredstatements="61" conditionals="25" coveredconditionals="25" methods="17" coveredmethods="17" elements="103" coveredelements="103" complexity="0" loc="61" ncloc="61" packages="6" files="6" classes="6"/>
     <package name="api">
       <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="index.js" path="/Users/prayag/prayag/ethereum-app/src/api/index.js">
@@ -28,24 +28,38 @@
       </file>
     </package>
     <package name="pages.block-transactions">
-      <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+      <metrics statements="29" coveredstatements="29" conditionals="17" coveredconditionals="17" methods="7" coveredmethods="7"/>
       <file name="index.jsx" path="/Users/prayag/prayag/ethereum-app/src/pages/block-transactions/index.jsx">
-        <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
-        <line num="8" count="19" type="stmt"/>
-        <line num="10" count="19" type="stmt"/>
-        <line num="12" count="18" type="stmt"/>
-        <line num="13" count="18" type="stmt"/>
-        <line num="15" count="18" type="stmt"/>
-        <line num="16" count="7" type="stmt"/>
-        <line num="17" count="7" type="stmt"/>
-        <line num="18" count="7" type="stmt"/>
-        <line num="19" count="7" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="26" count="7" type="stmt"/>
-        <line num="29" count="7" type="stmt"/>
-        <line num="31" count="18" type="stmt"/>
-        <line num="38" count="4" type="cond" truecount="2" falsecount="0"/>
+        <metrics statements="29" coveredstatements="29" conditionals="17" coveredconditionals="17" methods="7" coveredmethods="7"/>
+        <line num="8" count="34" type="stmt"/>
+        <line num="9" count="34" type="stmt"/>
+        <line num="11" count="33" type="stmt"/>
+        <line num="13" count="33" type="stmt"/>
+        <line num="15" count="33" type="stmt"/>
+        <line num="16" count="33" type="stmt"/>
+        <line num="18" count="33" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="33" count="10" type="stmt"/>
+        <line num="36" count="33" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="46" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="55" count="33" type="stmt"/>
+        <line num="72" count="20" type="cond" truecount="2" falsecount="0"/>
       </file>
     </package>
     <package name="pages.blocks">
@@ -82,7 +96,7 @@
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="8" count="19" type="stmt"/>
+        <line num="8" count="68" type="stmt"/>
       </file>
     </package>
   </project>
