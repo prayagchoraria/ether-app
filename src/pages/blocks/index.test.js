@@ -2,11 +2,13 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
-import { fetchBlocks } from '../../api';
+import { fetchBlocks, updateBlocks } from '../../api';
 import Blocks from '.';
 
 jest.mock('../../api', () => ({
   fetchBlocks: jest.fn(),
+  updateBlocks: jest.fn(),
+  stopUpdating: jest.fn(),
 }));
 
 const renderBlocks = () => {
@@ -98,5 +100,14 @@ describe.only('Blocks Component', () => {
       expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
     });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('updates blocks', async () => {
+    const tree = renderBlocks();
+    await waitFor(() => {
+      expect(tree.queryByText('Loading...')).not.toBeInTheDocument();
+      expect(updateBlocks).toHaveBeenCalledTimes(1);
+      expect(updateBlocks).toHaveBeenCalledWith(expect.any(Function));
+    });
   });
 });

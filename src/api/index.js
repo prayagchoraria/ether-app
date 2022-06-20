@@ -17,3 +17,16 @@ export const fetchBlockTransactions = async (blockNumber) => {
   const block = await provider.getBlockWithTransactions(blockNumber);
   return block;
 };
+
+export const updateBlocks = (callback) => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+  provider.on('block', async (blockNumber) => {
+    const block = await provider.getBlock(blockNumber);
+    callback(block);
+  });
+  return provider;
+};
+
+export const stopUpdating = (provider) => {
+  provider?.off('block');
+};

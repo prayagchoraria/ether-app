@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getFullTime, hexToInt } from '../../utils';
-import { fetchBlocks } from '../../api';
+import { fetchBlocks, stopUpdating, updateBlocks } from '../../api';
 
 export default function Blocks() {
   const [latestBlocks, setLatestBlocks] = useState(null);
   const [loadingBlocks, setLoadingBlocks] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [updatingBlocks, setUpdatingBlocks] = useState(false);
+  const currentProviderRef = useRef(null);
 
   useEffect(() => {
     const getBlocks = async () => {
@@ -22,6 +24,21 @@ export default function Blocks() {
     };
     getBlocks();
   }, []);
+
+  const getUpdatedBlock = (block) => {
+    if (block.number > latestBlocks[0].number) {
+      setLatestBlocks((blocks) => [block, ...blocks]);
+    }
+  };
+
+  useEffect(() => {
+    if (latestBlocks?.length > 0 && !updatingBlocks) {
+      const provider = updateBlocks(getUpdatedBlock);
+      currentProviderRef.current = provider;
+      setUpdatingBlocks(true);
+    }
+    return () => stopUpdating(currentProviderRef.current);
+  }, [latestBlocks]);
 
   return (
     <div className="blocks">
